@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "./src", // Source files are here
     "target": "es2022",
     "module": "nodenext", // or "node16"
     "moduleResolution": "nodenext", // or "node16"
