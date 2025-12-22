@@ -23,6 +23,7 @@ import { PartnerRoutes } from "./app/modules/partners/partners.routes";
 import { shippingRoutes } from "./app/modules/shipping/shipping.routes";
 import { PayoutRoutes } from "./app/modules/payout/payout.routes";
 import { CMSRouter } from "./app/modules/cms/cms.routes";
+import { CartRoutes } from "./app/modules/cart/cart.routes";
 
 dotenv.config();
 
@@ -67,6 +68,8 @@ app.use("/api/v1/partners", PartnerRoutes)
 app.use("/api/v1/shipping", shippingRoutes)
 app.use("/api/v1/payouts", PayoutRoutes)
 app.use("/api/v1/cms", CMSRouter)
+app.use("/api/v1/cart", CartRoutes)
+
 
 
 app.get("/health", (_req: Request, res: Response) => {

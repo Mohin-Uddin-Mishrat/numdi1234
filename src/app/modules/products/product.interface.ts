@@ -25,7 +25,9 @@ export interface IProduct extends Document {
     height?:number,
     length?: number,
     weight: number,
-    userId: Schema.Types.ObjectId
+    userId: Schema.Types.ObjectId,
+    avgRating?:number
+    soldUnits?:number
 }
 
 export type IBulkProduct = IProduct[];

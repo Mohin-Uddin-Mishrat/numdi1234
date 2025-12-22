@@ -83,6 +83,14 @@ const productSchema = new Schema<IProduct>({
         type: Schema.Types.ObjectId, 
         ref: "User", required: true 
     },
+    avgRating:{
+        type:Number,
+        default:0
+    },
+    soldUnits:{
+        type:Number,
+        default:0
+    }
 })
 
 export const ProductModel = model<IProduct>("Product", productSchema)

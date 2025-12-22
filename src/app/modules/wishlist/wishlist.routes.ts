@@ -64,7 +64,8 @@ router.post("/", verifyToken, authorizeRoles("CUSTOMER", "ADMIN" , "VENDOR"), Wi
  *         required: true
  *         schema:
  *           type: string
- *         description: ID of the product to remove
+ *           description: ID of the product to remove
+ *           example: "6711b03d1122334455667788"
  *     responses:
  *       200:
  *         description: Product removed from wishlist
