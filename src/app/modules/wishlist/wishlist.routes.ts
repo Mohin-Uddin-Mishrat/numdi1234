@@ -28,11 +28,16 @@ const router = Router();
  *             type: object
  *             required:
  *               - productId
+ *               - quantity
  *             properties:
  *               productId:
  *                 type: string
  *                 description: Product ID to add to wishlist
  *                 example: "6711b03d1122334455667788"
+ *               quantity:
+ *                 type: number
+ *                 description: Quantity of the product to add to wishlist
+ *                 example: 1
  *     responses:
  *       201:
  *         description: Product added to wishlist
@@ -43,7 +48,7 @@ const router = Router();
  *       403:
  *         description: Forbidden - Insufficient permissions
  */
-router.post("/", verifyToken, authorizeRoles("CUSTOMER", "ADMIN"), WishlistController.addToWishlist);
+router.post("/", verifyToken, authorizeRoles("CUSTOMER", "ADMIN" , "VENDOR"), WishlistController.addToWishlist);
 
 /**
  * @swagger

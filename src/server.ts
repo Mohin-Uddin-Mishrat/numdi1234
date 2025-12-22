@@ -88,7 +88,7 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI =
   process.env.MONGODB_URI ||
-  "mongodb+srv://Md-mishrat:HX02kj6RNzhKoeze@mishratcluster.hicglgb.mongodb.net/?appName=MishratCluster";
+  "mongodb+srv://numdi:1234@mishratcluster.hicglgb.mongodb.net/numdi?appName=MishratCluster";
 
 const httpServer = http.createServer(app);
 

@@ -12,13 +12,21 @@ class ProductController {
 
       // Upload each file manually to Cloudinary
       if (files?.mainImage?.[0])
-        imageUrls.mainImageUrl = await uploadToCloudinary(files.mainImage[0].path);
+        imageUrls.mainImageUrl = await uploadToCloudinary(
+          files.mainImage[0].path
+        );
       if (files?.sideImage?.[0])
-        imageUrls.sideImageUrl = await uploadToCloudinary(files.sideImage[0].path);
+        imageUrls.sideImageUrl = await uploadToCloudinary(
+          files.sideImage[0].path
+        );
       if (files?.sideImage2?.[0])
-        imageUrls.sideImage2Url = await uploadToCloudinary(files.sideImage2[0].path);
+        imageUrls.sideImage2Url = await uploadToCloudinary(
+          files.sideImage2[0].path
+        );
       if (files?.lastImage?.[0])
-        imageUrls.lastImageUrl = await uploadToCloudinary(files.lastImage[0].path);
+        imageUrls.lastImageUrl = await uploadToCloudinary(
+          files.lastImage[0].path
+        );
       if (files?.video?.[0])
         imageUrls.videoUrl = await uploadToCloudinary(files.video[0].path);
 
@@ -64,6 +72,37 @@ class ProductController {
     }
   }
 
+  async searchProducts(req: Request, res: Response) {
+    try {
+      const { productCategory, search } = req.query;
+      const page = parseInt(req.query.page as string, 10) || 1;
+      const limit = Math.min(
+        parseInt(req.query.limit as string, 10) || 10,
+        100
+      );
+
+      const result = await productService.searchProducts({
+        productCategory: productCategory as string | undefined,
+        search: search as string | undefined,
+        page,
+        limit,
+      });
+
+      res.json({
+        success: true,
+        data: result.data,
+        pagination: {
+          page: result.page,
+          limit: result.limit,
+          totalPages: result.totalPages,
+          totalItems: result.totalItems,
+        },
+      });
+    } catch (err: any) {
+      console.error("Failed to search products:", err);
+      res.status(500).json({ success: false, message: err.message });
+    }
+  }
   // ✅ Get product by ID
   async getProductById(req: Request, res: Response) {
     try {
@@ -87,13 +126,21 @@ class ProductController {
 
       // Upload updated files to Cloudinary (if provided)
       if (files?.mainImage?.[0])
-        imageUrls.mainImageUrl = await uploadToCloudinary(files.mainImage[0].path);
+        imageUrls.mainImageUrl = await uploadToCloudinary(
+          files.mainImage[0].path
+        );
       if (files?.sideImage?.[0])
-        imageUrls.sideImageUrl = await uploadToCloudinary(files.sideImage[0].path);
+        imageUrls.sideImageUrl = await uploadToCloudinary(
+          files.sideImage[0].path
+        );
       if (files?.sideImage2?.[0])
-        imageUrls.sideImage2Url = await uploadToCloudinary(files.sideImage2[0].path);
+        imageUrls.sideImage2Url = await uploadToCloudinary(
+          files.sideImage2[0].path
+        );
       if (files?.lastImage?.[0])
-        imageUrls.lastImageUrl = await uploadToCloudinary(files.lastImage[0].path);
+        imageUrls.lastImageUrl = await uploadToCloudinary(
+          files.lastImage[0].path
+        );
       if (files?.video?.[0])
         imageUrls.videoUrl = await uploadToCloudinary(files.video[0].path);
 

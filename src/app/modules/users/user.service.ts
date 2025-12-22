@@ -214,7 +214,7 @@ export class UserService {
 
   private generateAccessToken(id: string, role: string): string {
     const secret = process.env.JWT_SECRET || "secretkey";
-    return jwt.sign({ id, role }, secret, { expiresIn: "15m" }); // 15 minutes
+    return jwt.sign({ id, role }, secret, { expiresIn: "1d" }); // 1 day
   }
 
   private generateRefreshToken(id: string, role: string): string {

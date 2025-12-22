@@ -229,6 +229,56 @@ router.get("/", productController.getAllProducts);
 
 /**
  * @swagger
+ * /products/search:
+ *   get:
+ *     summary: Search products by name/description, filter by category, with pagination
+ *     tags: [Products]
+ *     parameters:
+ *       - in: query
+ *         name: productCategory
+ *         schema:
+ *           type: string
+ *         description: Category ID (MongoDB ObjectId)
+ *       - in: query
+ *         name: search
+ *         schema:
+ *           type: string
+ *         description: Search term for name or description
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                 pagination:
+ *                   type: object
+ *       500:
+ *         description: Server error
+ */
+// New route for filtered + paginated search
+router.get('/search', productController.searchProducts);
+
+
+/**
+ * @swagger
  * /products/my/products:
  *   get:
  *     summary: Get products created by the logged-in vendor

@@ -7,13 +7,13 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
   
   if (!token) {
     const authHeader = req.headers.authorization;
-    if (authHeader && authHeader.startsWith("Bearer ")) {
-      token = authHeader.split(" ")[1];
+    if (authHeader) {
+      token = authHeader
     }
   }
 
   if (!token) {
-    return res.status(401).json({ success: false, message: "Unauthorized: No token provided" });
+    return res.status(403).json({ success: false, message: "Unauthorized: No token provided" });
   }
 
   try {
@@ -22,6 +22,6 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
     (req as any).user = decoded;
     next();
   } catch (error) {
-    res.status(403).json({ success: false, message: "Invalid or expired token" });
+    res.status(401).json({ success: false, message: "Invalid or expired token" });
   }
 };
