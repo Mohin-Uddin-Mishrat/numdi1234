@@ -62,5 +62,6 @@ export interface IUser extends Document {
   holdingTime: number,
   categories: string[],  
   storeBanner: string,
+  paystackSubaccountCode?: string; // e.g., "ACCT_xxxxx"
   comparePassword(candidatePassword: string): Promise<boolean>;
 }

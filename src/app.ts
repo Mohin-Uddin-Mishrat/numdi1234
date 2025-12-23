@@ -24,6 +24,7 @@ import { shippingRoutes } from "./app/modules/shipping/shipping.routes";
 import { PayoutRoutes } from "./app/modules/payout/payout.routes";
 import { CMSRouter } from "./app/modules/cms/cms.routes";
 import { CartRoutes } from "./app/modules/cart/cart.routes";
+import { paystackRouter } from "./app/modules/paystack/paystack.route";
 
 dotenv.config();
 
@@ -59,7 +60,7 @@ app.use("/api/v1/support", SupportRoute);
 app.use("/api/v1/newsletter", NewsletterRoute);
 app.use("/api/v1/coupons", CouponRoute);
 app.use("/api/v1/orders", OrderRoute);
-app.use("/api/v1/payment", PaymentsRoutes)
+// app.use("/api/v1/payment", PaymentsRoutes)
 app.use("/api/v1/shipment", ShipmentRouter)
 app.use('/api/v1/afspay', AFSPayment)
 app.use("/api/v1/wallet", WalletRoutes);
@@ -69,6 +70,8 @@ app.use("/api/v1/shipping", shippingRoutes)
 app.use("/api/v1/payouts", PayoutRoutes)
 app.use("/api/v1/cms", CMSRouter)
 app.use("/api/v1/cart", CartRoutes)
+// app.use("/api/v1/payments", paystackRouter)
+
 
 
 

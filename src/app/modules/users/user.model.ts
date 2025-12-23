@@ -55,7 +55,8 @@ const userSchema = new Schema<IUser>(
     currency: {type: String},
     holdingTime: {type: Number},
     categories: {type: [String]},
-    storeBanner: {type: String}
+    storeBanner: {type: String},
+    paystackSubaccountCode: { type: String }, // Add this
   },
   {
     timestamps: true,
